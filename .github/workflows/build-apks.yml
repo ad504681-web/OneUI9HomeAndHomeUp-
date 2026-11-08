@@ -2,14 +2,14 @@ name: Build One UI 9 Home & Home Up APKs
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -18,13 +18,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.7'
+      - name: Install Gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle
 
-      - name: Build One UI 9 Home and Home Up APKs
-        run: gradle :oneuihome:assembleDebug :homeup:assembleDebug
+      - name: Build APKs
+        run: gradle :oneuihome:assembleDebug :homeup:assembleDebug --no-daemon
 
       - name: Upload Compiled APKs
         uses: actions/upload-artifact@v4
