@@ -117,7 +117,6 @@ fun OneUI9LauncherRoot(
     var showHomeUpQuickDialog by remember { mutableStateOf(false) }
     var showExpandedFolder by remember { mutableStateOf(false) }
     var activeWidgetIndex by remember { mutableIntStateOf(0) }
-    var gestureToast by remember { mutableStateOf<String?>(null) }
 
     val homeApps = remember {
         listOf(
@@ -153,7 +152,6 @@ fun OneUI9LauncherRoot(
                 }
             )
     ) {
-        // Status Bar with One UI 9 Live Data Speed Monitor
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -175,18 +173,15 @@ fun OneUI9LauncherRoot(
             }
         }
 
-        // Main Home Screen Content
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 48.dp, bottom = 96.dp, start = 16.dp, end = 16.dp)
         ) {
-            // One UI 9 Stackable Widget + Enlarged Folder Row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Stack Widget Card
                 Box(
                     modifier = Modifier
                         .weight(1.4f)
@@ -239,7 +234,6 @@ fun OneUI9LauncherRoot(
                     }
                 }
 
-                // One UI 9 Enlarged Frosted-Glass Folder
                 if (config.enlargedFoldersEnabled) {
                     val folderAlpha = (100 - config.folderBackgroundTransparency).coerceIn(10, 95) / 100f
                     Box(
@@ -270,7 +264,6 @@ fun OneUI9LauncherRoot(
 
             Spacer(modifier = Modifier.height(18.dp))
 
-            // Either DIY Home Screen Freeform Mode OR Home Up Grid Mode
             if (config.diyHomeScreenEnabled) {
                 Text(
                     "DIY Home Screen Active (Freeform Drag & Rotate)",
@@ -329,7 +322,6 @@ fun OneUI9LauncherRoot(
             }
         }
 
-        // One UI 9 Edge Panel Handle & Frosted-Glass Panel
         if (config.edgePanelEnabled) {
             Box(
                 modifier = Modifier
@@ -372,7 +364,6 @@ fun OneUI9LauncherRoot(
             }
         }
 
-        // Bottom Dock & Gesture Bar
         Column(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -395,7 +386,6 @@ fun OneUI9LauncherRoot(
             }
         }
 
-        // One UI 8/9 On-Screen Home Up Settings Dialog
         if (showHomeUpQuickDialog) {
             AlertDialog(
                 onDismissRequest = { showHomeUpQuickDialog = false },
@@ -470,6 +460,7 @@ fun ActionPill(text: String, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LauncherIconItem(
     app: AppShortcut,
