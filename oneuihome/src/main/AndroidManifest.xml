@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="com.clone.samsung.permission.HOME_UP_IPC" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <queries>
+        <package android:name="com.clone.samsung.android.app.homestar" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:label="One UI 9 Home"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <activity
+            android:name=".OneUIHomeActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.MONKEY" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".HomeUpConfigProvider"
+            android:authorities="com.clone.sec.android.app.launcher.homeup.provider"
+            android:exported="true"
+            android:permission="com.clone.samsung.permission.HOME_UP_IPC" />
+
+    </application>
+</manifest>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="com.clone.samsung.permission.HOME_UP_IPC" />
+
+    <!-- Required on Android 11-14 (One UI 6) so Home Up APK can bind to One UI Home Clone APK -->
+    <queries>
+        <package android:name="com.clone.sec.android.app.launcher" />
+        <provider android:authorities="com.clone.sec.android.app.launcher.homeup.provider" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:label="Home Up (One UI 9)"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <activity
+            android:name=".HomeUpMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

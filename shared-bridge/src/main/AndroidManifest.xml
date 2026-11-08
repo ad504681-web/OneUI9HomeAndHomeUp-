@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Custom IPC permission shared between One UI 9 Home APK and Home Up APK -->
+    <permission
+        android:name="com.clone.samsung.permission.HOME_UP_IPC"
+        android:protectionLevel="normal" />
+</manifest>
