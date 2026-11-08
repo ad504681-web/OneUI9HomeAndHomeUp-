@@ -18,11 +18,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle
-        run: sudo apt-get update && sudo apt-get install -y gradle
+      - name: Setup Gradle 8.7
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.7'
+          cache-read-only: false
 
       - name: Build APKs
-        run: gradle :oneuihome:assembleDebug :homeup:assembleDebug --no-daemon
+        run: gradle :oneuihome:assembleDebug :homeup:assembleDebug --stacktrace
 
       - name: Upload Compiled APKs
         uses: actions/upload-artifact@v4
